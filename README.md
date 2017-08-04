@@ -16,6 +16,38 @@ Vue.use(payment);   // 注入
 <payment></payment>
 ```
 
+```javascript
+export default {
+  name: 'app',
+  data () {
+    return {
+        payShow: false,
+        payStatus: false,
+        payTitle:"请输入支付密码"
+    }
+  },
+  methods:{
+    payClick:function(){
+        // 显示支付键盘
+        this.payShow = true;
+    },
+    submitFns:function(value){
+        // 关闭键盘
+        if(value=='123456'){
+            //密码正确
+            setTimeout(function(_this){
+                _this.payStatus = true;
+            },100,this)
+        }else{
+            // 密码错误
+            setTimeout(function(_this){
+                _this.payStatus = false;
+            },100,this)
+        }
+    }
+  },
+}
+```
 ## 传参
 
 ```javascript
@@ -30,7 +62,7 @@ Vue.use(payment);   // 注入
 ``` 
 <table width="100%" border="0">
     <thead>
-    <tr>
+    <tr style="background:#d6e2ef">
         <td>key</td>
         <td>value</td>
         <td>说明</td>
@@ -75,10 +107,9 @@ Vue.use(payment);   // 注入
 
 ## 方法
 
-
 <table width="100%" border="0">
     <thead>
-    <tr>
+    <tr style="background:#d6e2ef">
         <td>name</td>
         <td>说明</td>
     </tr>
